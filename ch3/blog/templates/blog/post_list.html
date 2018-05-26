@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>myblog</title>
+    <style>
+        * {margin: 0; padding: 0}
+        header{
+            border-bottom: 1px solid rgb(182, 177, 177);
+        }
+        header div{
+            width:40%;
+            margin:0 auto;
+            padding: 20px;
+        }
+        article{
+            width:40%;
+            margin:0 auto;
+        }
+        article #hash{
+            padding: 70px;
+        }
+        article .Thelast{
+            margin:37px 0;
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>YoonGyo Coding Blog</h1>
+            <form action="" method="get">
+                <input type="text" name="q" />
+                <input type="submit" value="검색" />
+            </form>
+        </div>
+    </header>
+    <article>
+        <div id="hash">
+            <h1>해쉬 태그</h1>
+        </div>
+        <hr>
+        <div class="Thelast">
+            <a href="#">최신 글 바로가기</a>
+        </div>
+        <ul>
+        {% for post in post_list %}
+            <li>
+                {{ post.id}}
+                <a href="/blog/{{ post.id }}/">
+                    {{ post.title}}
+                </a>
+                {{ post.content}}
+                <small>by {{ post.created_at }}</small>
+                <small>by {{ post.updated_at }}</small>
+            </li>
+        {% endfor %}
+        </ul>
+    </article>
+</body>
+</html>
